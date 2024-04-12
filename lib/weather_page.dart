@@ -390,7 +390,9 @@ class WeatherPage extends StatelessWidget {
                       icon: CupertinoIcons.gauge,
                       title: 'ДАВЛЕНИЕ',
                       content: PressureContentWidget(
-                        pressure: weatherData.current.surfacePressure.toInt(),
+                        pressure:
+                            (weatherData.current.surfacePressure * 0.75006)
+                                .toInt(),
                       ),
                     ),
                   ),
