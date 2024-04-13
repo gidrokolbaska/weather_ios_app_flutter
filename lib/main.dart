@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:intl/intl.dart';
+
 import 'package:weather_app/bloc/bloc/weather_bloc.dart';
 import 'package:weather_app/network/dio_client.dart';
 import 'package:weather_app/utils/weather_code_formatter.dart';
@@ -11,8 +11,8 @@ import 'package:weather_app/weather_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  initializeDateFormatting('ru_RU', null);
-  Intl.defaultLocale = 'ru_RU';
+  initializeDateFormatting();
+
   runApp(const WeatherApp());
 }
 

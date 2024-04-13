@@ -23,7 +23,8 @@ class SunsetSunriseWidget extends StatelessWidget {
               size: 40,
             ),
             Text(
-              DateFormat('HH:mm').format(sunrise),
+              DateFormat('HH:mm').format(sunrise
+                  .add(Duration(hours: DateTime.now().timeZoneOffset.inHours))),
               style: const TextStyle(color: Colors.white, fontSize: 35),
             )
           ],
@@ -43,7 +44,9 @@ class SunsetSunriseWidget extends StatelessWidget {
               size: 40,
             ),
             Text(
-              DateFormat('HH:mm').format(sunset),
+              DateFormat('HH:mm').format(sunset
+                  .toLocal()
+                  .add(Duration(hours: DateTime.now().timeZoneOffset.inHours))),
               style: const TextStyle(color: Colors.white, fontSize: 35),
             )
           ],

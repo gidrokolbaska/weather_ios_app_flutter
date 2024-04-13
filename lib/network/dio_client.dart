@@ -29,6 +29,6 @@ class DioClient {
         'temperature_2m,weather_code,uv_index,visibility,dew_point_2m',
         'weather_code,temperature_2m_max,temperature_2m_min,wind_speed_10m_max,sunrise,sunset',
         'ms',
-        'Europe/Moscow');
+        'GMT');
   }
 }
