@@ -23,10 +23,10 @@ class DioClient {
 
   Future<WeatherDataModel> getWeather() async {
     return await client.getWeather(
-        59.9311,
-        30.3609,
+        55.751244,
+        37.618423,
         'temperature_2m,relative_humidity_2m,precipitation,surface_pressure,wind_speed_10m,wind_direction_10m,weather_code,apparent_temperature',
-        'temperature_2m,weather_code,uv_index,visibility,dew_point_2m',
+        'temperature_2m,weather_code,uv_index,visibility,dew_point_2m,wind_direction_10m',
         'weather_code,temperature_2m_max,temperature_2m_min,wind_speed_10m_max,sunrise,sunset',
         'ms',
         'GMT');

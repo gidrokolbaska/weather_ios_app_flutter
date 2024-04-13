@@ -293,7 +293,7 @@ class WeatherPage extends StatelessWidget {
                       icon: CupertinoIcons.wind,
                       title: 'ВЕТЕР',
                       content: WindContentWidget(
-                        windAngle: 90 -
+                        windAngle:
                             weatherData.current.windDirection10m.toDouble(),
                         windSpeed: weatherData.current.windSpeed10m,
                       ),

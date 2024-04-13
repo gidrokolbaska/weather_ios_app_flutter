@@ -113,6 +113,8 @@ class Hourly {
   final List<double> temperature2m;
   @JsonKey(name: 'weather_code')
   final List<int> weatherCode;
+  @JsonKey(name: 'wind_direction_10m')
+  final List<int> windDirection;
   @JsonKey(name: 'uv_index')
   final List<double> uvIndex;
   @JsonKey(name: 'visibility')
@@ -124,6 +126,7 @@ class Hourly {
     required this.time,
     required this.temperature2m,
     required this.weatherCode,
+    required this.windDirection,
     required this.uvIndex,
     required this.visibility,
     required this.dewPoint,

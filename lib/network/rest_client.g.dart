@@ -92,6 +92,9 @@ Hourly _$HourlyFromJson(Map<String, dynamic> json) => Hourly(
           .toList(),
       weatherCode:
           (json['weather_code'] as List<dynamic>).map((e) => e as int).toList(),
+      windDirection: (json['wind_direction_10m'] as List<dynamic>)
+          .map((e) => e as int)
+          .toList(),
       uvIndex: (json['uv_index'] as List<dynamic>)
           .map((e) => (e as num).toDouble())
           .toList(),
@@ -107,6 +110,7 @@ Map<String, dynamic> _$HourlyToJson(Hourly instance) => <String, dynamic>{
       'time': instance.time.map((e) => e.toIso8601String()).toList(),
       'temperature_2m': instance.temperature2m,
       'weather_code': instance.weatherCode,
+      'wind_direction_10m': instance.windDirection,
       'uv_index': instance.uvIndex,
       'visibility': instance.visibility,
       'dew_point_2m': instance.dewPoint,

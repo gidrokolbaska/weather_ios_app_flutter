@@ -251,7 +251,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "4c118690993819fd5029edf1efbd759908295fae"
+      resolved-ref: f7fcff7fa5d08e20b8ba5fe24b22c398a030c42d
       url: "https://github.com/gidrokolbaska/flutter_compass_view"
     source: git
     version: "1.0.0+1"
