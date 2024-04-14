@@ -1,9 +1,8 @@
-import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:intl/intl.dart';
 import 'package:path_drawing/path_drawing.dart';
+import 'dart:ui' as ui;
 
 class SunsetSunriseWidget extends StatelessWidget {
   const SunsetSunriseWidget({
@@ -26,25 +25,15 @@ class SunsetSunriseWidget extends StatelessWidget {
           child: CustomPaint(
             painter: DashedArc(
               color: Colors.white,
-            ),
-            child: Align(
-              alignment: Alignment.topCenter,
-              child: Transform.translate(
-                offset: const Offset(0, 10),
-                child: BlurryContainer(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  height: 25,
-                  borderRadius: BorderRadius.circular(15),
-                  blur: 60,
-                  color: Colors.transparent,
-                  child: Text(
-                    '${intToTimeLeft(dayLightDuration.toInt())}',
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                ),
+              text: intToTimeLeft(
+                dayLightDuration.toInt(),
               ),
             ),
+            child: const Center(
+                child: Text(
+              'Световой день',
+              style: TextStyle(color: Colors.white),
+            )),
           ),
         ),
         Row(
@@ -107,15 +96,42 @@ String intToTimeLeft(int value) {
 
 class DashedArc extends CustomPainter {
   final Color color;
+  final String text;
 
   DashedArc({
     required this.color,
+    required this.text,
   });
 
   @override
   void paint(Canvas canvas, Size size) {
     const double dashSize = 4;
     const double gapSize = 8;
+    canvas.save();
+    const textStyle = TextStyle(
+      color: Colors.white,
+      fontSize: 20,
+    );
+    final textSpan = TextSpan(
+      text: text,
+      style: textStyle,
+    );
+    final TextPainter textPainter = TextPainter(
+      text: textSpan,
+      textDirection: ui.TextDirection.ltr,
+    );
+    textPainter.layout(
+      minWidth: 0,
+      maxWidth: double.maxFinite,
+    );
+    final offset = Offset(
+      (size.width - textPainter.width) * 0.5,
+      6,
+    );
+
+    canvas.clipRect(
+        Rect.fromLTWH(offset.dx, 0, textPainter.width, textPainter.height + 6),
+        clipOp: ui.ClipOp.difference);
 
     canvas.drawPath(
         dashPath(
@@ -129,28 +145,8 @@ class DashedArc extends CustomPainter {
           ..color = color
           ..style = PaintingStyle.stroke
           ..strokeWidth = dashSize);
-
-    // final textStyle = TextStyle(
-    //     color: Colors.white,
-    //     fontSize: 20,
-    //     background: Paint()..blendMode = BlendMode.xor);
-    // final textSpan = TextSpan(
-    //   text: 'Hello world',
-    //   style: textStyle,
-    // );
-    // final TextPainter textPainter = TextPainter(
-    //   text: textSpan,
-    //   textDirection: ui.TextDirection.ltr,
-    // );
-    // textPainter.layout(
-    //   minWidth: 0,
-    //   maxWidth: size.width,
-    // );
-    // final offset = Offset(
-    //   (size.width - textPainter.width) * 0.5,
-    //   10,
-    // );
-    // textPainter.paint(canvas, offset);
+    canvas.restore();
+    textPainter.paint(canvas, offset);
   }
 
   @override

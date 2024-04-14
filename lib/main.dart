@@ -69,12 +69,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 }
                 return Stack(
                   children: [
-                    WeatherBg(
-                      weatherType: weatherTypeBackgroundFromWeatherCode(
-                          state.weatherData!.current.weatherCode,
-                          state.weatherData!.current.time),
-                      width: MediaQuery.sizeOf(context).width,
-                      height: MediaQuery.sizeOf(context).height,
+                    RepaintBoundary(
+                      child: WeatherBg(
+                        weatherType: weatherTypeBackgroundFromWeatherCode(
+                            state.weatherData!.current.weatherCode,
+                            state.weatherData!.current.time),
+                        width: MediaQuery.sizeOf(context).width,
+                        height: MediaQuery.sizeOf(context).height,
+                      ),
                     ),
                     WeatherPage(
                       weatherData: state.weatherData!,
