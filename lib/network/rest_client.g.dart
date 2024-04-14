@@ -71,6 +71,9 @@ Daily _$DailyFromJson(Map<String, dynamic> json) => Daily(
       sunset: (json['sunset'] as List<dynamic>)
           .map((e) => DateTime.parse(e as String))
           .toList(),
+      dayLightDuration: (json['daylight_duration'] as List<dynamic>)
+          .map((e) => (e as num).toDouble())
+          .toList(),
     );
 
 Map<String, dynamic> _$DailyToJson(Daily instance) => <String, dynamic>{
@@ -81,6 +84,7 @@ Map<String, dynamic> _$DailyToJson(Daily instance) => <String, dynamic>{
       'wind_speed_10m_max': instance.windSpeed,
       'sunrise': instance.sunrise.map((e) => e.toIso8601String()).toList(),
       'sunset': instance.sunset.map((e) => e.toIso8601String()).toList(),
+      'daylight_duration': instance.dayLightDuration,
     };
 
 Hourly _$HourlyFromJson(Map<String, dynamic> json) => Hourly(

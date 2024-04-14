@@ -92,6 +92,8 @@ class Daily {
   final List<DateTime> sunrise;
   @JsonKey(name: 'sunset')
   final List<DateTime> sunset;
+  @JsonKey(name: 'daylight_duration')
+  final List<double> dayLightDuration;
 
   Daily({
     required this.time,
@@ -101,6 +103,7 @@ class Daily {
     required this.windSpeed,
     required this.sunrise,
     required this.sunset,
+    required this.dayLightDuration,
   });
   factory Daily.fromJson(Map<String, dynamic> json) => _$DailyFromJson(json);
   Map<String, dynamic> toJson() => _$DailyToJson(this);

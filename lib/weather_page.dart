@@ -261,6 +261,14 @@ class WeatherPage extends StatelessWidget {
                       icon: CupertinoIcons.sun_dust_fill,
                       title: 'СОЛНЦЕ',
                       content: SunsetSunriseWidget(
+                        dayLightDuration: weatherData.daily
+                            .dayLightDuration[weatherData.daily.time.indexOf(
+                          DateTime(
+                            DateTime.now().year,
+                            DateTime.now().month,
+                            DateTime.now().day,
+                          ),
+                        )],
                         sunrise: weatherData
                             .daily.sunrise[weatherData.daily.time.indexOf(
                           DateTime(
@@ -367,16 +375,15 @@ class WeatherPage extends StatelessWidget {
                       content: VisibilityWidget(
                         visibility: weatherData
                             .hourly
-                            .visibility[weatherData.hourly.time
-                                .indexOf(
-                                  DateTime(
-                                    DateTime.now().year,
-                                    DateTime.now().month,
-                                    DateTime.now().day,
-                                    DateTime.now().hour,
-                                  ),
-                                )
-                                .toInt()]
+                            .visibility[weatherData.hourly.time.indexOf(
+                          DateTime(
+                            DateTime.now().year,
+                            DateTime.now().month,
+                            DateTime.now().day,
+                            DateTime.now().hour,
+                          ).toLocal().add(Duration(
+                              hours: DateTime.now().timeZoneOffset.inHours)),
+                        )]
                             .toInt(),
                       ),
                     ),
