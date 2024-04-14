@@ -30,9 +30,11 @@ class SunsetSunriseWidget extends StatelessWidget {
               ),
             ),
             child: const Center(
-                child: Text(
-              'Световой день',
-              style: TextStyle(color: Colors.white),
+                child: FittedBox(
+              child: Text(
+                'Световой день',
+                style: TextStyle(color: Colors.white),
+              ),
             )),
           ),
         ),

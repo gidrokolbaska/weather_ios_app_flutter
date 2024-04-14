@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:adv_flutter_weather/bg/weather_bg.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:intl/intl.dart';
 
 import 'package:weather_app/bloc/bloc/weather_bloc.dart';
 import 'package:weather_app/network/dio_client.dart';
@@ -11,8 +15,9 @@ import 'package:weather_app/weather_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  initializeDateFormatting();
 
+  initializeDateFormatting(Platform.localeName, null);
+  Intl.defaultLocale = Platform.localeName;
   runApp(const WeatherApp());
 }
 
@@ -23,6 +28,15 @@ class WeatherApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      supportedLocales: [
+        Locale('en', 'US'),
+        Locale('ru', 'RU'),
+      ],
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,

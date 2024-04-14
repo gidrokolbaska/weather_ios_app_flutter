@@ -30,7 +30,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  flutter_localizations:
+    sdk: flutter
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -46,7 +47,7 @@ dependencies:
     git: https://github.com/gidrokolbaska/simple_progress_indicators
   flutter_compass_view:
     git: https://github.com/gidrokolbaska/flutter_compass_view
-  intl: ^0.19.0
+  intl: ^0.18.1
   adv_flutter_weather: ^1.0.0
   url_launcher: ^6.2.5
   dio:
